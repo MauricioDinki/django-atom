@@ -1,112 +1,110 @@
 ".source.python.django":
   AutoField:
-    prefix: "auto"
+    prefix: "mauto"
     body: "${1:FIELDNAME} = models.AutoField()"
   BooleanField:
-    prefix: "boolean"
+    prefix: "mboolean"
     body: "${1:FIELDNAME} = models.BooleanField(${2:default=True})"
   CharField:
-    prefix: "char"
+    prefix: "mchar"
     body: "${1:FIELDNAME} = models.CharField(${2:blank=True}, max_length=${3:100})"
   CommaSeparatedIntegerField:
-    prefix: "commaseparatedinteger"
+    prefix: "mcommaseparatedinteger"
     body: "${1:FIELDNAME} = models.CommaSeparatedIntegerField(max_length=$2)"
   DateField:
-    prefix: "date"
+    prefix: "mdate"
     body: "${1:FIELDNAME} = models.DateField(${2:default=datetime.datetime.today})"
   DateTimeField:
-    prefix: "datetime"
+    prefix: "mdatetime"
     body: "${1:FIELDNAME} = models.DateTimeField(${2:blank=True}${3:, default=datetime.datetime.now})"
   DecimalField:
-    prefix: "decimal"
+    prefix: "mdecimal"
     body: "${1:FIELDNAME} = models.DecimalField(max_digits=$2, decimal_places=$3)"
   EmailField:
-    prefix: "email"
+    prefix: "memail"
     body: "${1:FIELDNAME} = models.EmailField()"
   FileField:
-    prefix: "file"
+    prefix: "mfile"
     body: "${1:FIELDNAME} = models.FileField(upload_to=${1:/path/for/upload})"
   FilePathField:
-    prefix: "filepath"
+    prefix: "mfilepath"
     body: "${1:FIELDNAME} = models.FilePathField(path=\"${1:/location/of/choices}\"${2:, match=\"${3:regex}\"}${4:, recursive=True})"
   FloatField:
-    prefix: "float"
+    prefix: "mfloat"
     body: "${1:FIELDNAME} = models.FloatField()"
   ForeignKey:
     prefix: "fk"
     body: "${1:FIELDNAME} = models.ForeignKey(${2:RELATED_MODEL})"
   IPAddressField:
-    prefix: "ipaddress"
+    prefix: "mipaddress"
     body: "${1:FIELDNAME} = models.IPAddressField(${2:blank=True})"
   ImageField:
-    prefix: "image"
+    prefix: "mimage"
     body: "${1:FIELDNAME} = models.ImageField(upload_to=\"${2:/dir/path}\"${3:, height_field=$4}${5:, width_field=$6})"
   IntegerField:
-    prefix: "integer"
+    prefix: "minteger"
     body: "${1:FIELDNAME} = models.IntegerField(${2:blank=True, null=True})"
   ManyToManyField:
-    prefix: "manytomany"
+    prefix: "m2m"
     body: "${1:FIELDNAME} = models.ManyToManyField(${2:RELATED_MODEL})"
   "Model Skeleton":
     prefix: "model"
     body: '''
       class ${1:Modelname}(models.Model):
-      	"""${2:($1 description)}"""
-      	$0
-      
-      	class Admin:
-      		list_display = ('',)
-      		search_fields = ('',)
-      
-      	def __unicode__(self):
-      		return u"$1"
-      
+          ${2:# TODO: Define fields here}
+
+          class Meta:
+              verbose_name = '$1'
+              verbose_name_plural = '$1s'
+
+          def __unicode__(self):
+              pass
     '''
   NullBooleanField:
-    prefix: "nullboolean"
+    prefix: "mnullboolean"
     body: "${1:FIELDNAME} = models.NullBooleanField(${2:default=True})"
   PhoneNumberField:
-    prefix: "phonenumber"
+    prefix: "mphone"
     body: "${1:FIELDNAME} = models.PhoneNumberField(${2:blank=True})"
   PositiveIntegerField:
-    prefix: "positiveinteger"
+    prefix: "mpositiveinteger"
     body: "${1:FIELDNAME} = models.PositiveIntegerField(${2:blank=True, null=True})"
   PositiveSmallIntegerField:
-    prefix: "positivesmallinteger"
+    prefix: "mpositivesmallinteger"
     body: "${1:FIELDNAME} = models.PositiveSmallIntegerField(${2:blank=True, null=True})"
   SlugField:
     prefix: "slug"
     body: "${1:slug} = models.SlugField(${2:prepopulate_from=(\"$3\",$4)})"
   SmallIntegerField:
-    prefix: "smallinteger"
+    prefix: "msmallinteger"
     body: "${1:FIELDNAME} = models.SmallIntegerField(${2:blank=True, null=True})"
   TextField:
-    prefix: "text"
+    prefix: "mtext"
     body: "${1:FIELDNAME} = models.TextField(${2:blank=True})"
   TimeField:
-    prefix: "time"
+    prefix: "mtime"
     body: "${1:FIELDNAME} = models.TimeField(${2:blank=True})"
   URLField:
-    prefix: "url"
+    prefix: "murl"
     body: "${1:FIELDNAME} = models.URLField(${2:blank=True}, verify_exists=${3:True})"
   USStateField:
-    prefix: "usstate"
+    prefix: "musstate"
     body: "${1:FIELDNAME} = models.USStateField(${2:blank=True})"
   XMLField:
-    prefix: "xml"
+    prefix: "mxml"
     body: "${1:FIELDNAME} = models.XMLField(schema_path=${2:/path/to/RelaxNG}${3:, blank=True})"
   send_mail:
     prefix: "sendmail"
     body: '''
       mail.send_mail("${1:Subject}", "${2:Message}", "${3:from@example.com}", ${4:["to@example.com"]}${5:, fail_silently=True})
-      
+
     '''
 ".text.html.django":
   autoescape:
     prefix: "autoescape"
     body: '''
       {% autoescape ${1:off} %}
-      	$2
+          $2
       {% endautoescape %}
     '''
   block:
@@ -116,14 +114,14 @@
     prefix: "blocktrans"
     body: '''
       {% blocktrans ${1:with ${2:var1} as ${3:var2}} %}
-      	$4{{ $3 }}
+    	   $4{{ $3 }}
       {% endblocktrans %}
     '''
   comment:
     prefix: "comment"
     body: '''
       {% comment %}
-      	$1
+    	   $1
       {% endcomment %}
     '''
   cycle:
@@ -135,6 +133,9 @@
   else:
     prefix: "else"
     body: "{% else %}"
+  empty:
+    prefix: "empty"
+    body: "{% empty %}"
   extends:
     prefix: "extends"
     body: "{% extends \"$1\" %}"
@@ -142,7 +143,7 @@
     prefix: "filter"
     body: '''
       {% filter $1 %}
-      	$2
+    	   $2
       {% endfilter %}
     '''
   firstof:
@@ -152,7 +153,9 @@
     prefix: "for"
     body: '''
       {% for $1 in $2 %}
-      	$3
+          $3
+      {% empty %}
+          $4
       {% endfor %}
     '''
   if:

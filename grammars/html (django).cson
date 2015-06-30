@@ -1,5 +1,5 @@
 fileTypes: []
-name: "HTML (Django)"
+name: "HTML (Django Template)"
 patterns: [
   {
     comment: "Since html is valid in Django templates include the html patterns"
