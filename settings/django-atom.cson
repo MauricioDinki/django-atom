@@ -1,0 +1,5 @@
+".text.html.django":
+  editor:
+    commentStart: "{# "
+    commentEnd: " #}"
+    foldEndPattern: "(</(?i:a|head|body|table|thead|tbody|small|tfoot|tr|div|header|article|section|footer|aside|nav|select|fieldset|style|script|ul|ol|li|form|dl|p)\\b.*?>|{% (endblock|endblocktrans|endcomment|endfilter|endfor|endif|endifchanged|endifequal|endifnotequal) %})"

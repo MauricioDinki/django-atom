@@ -1,0 +1,214 @@
+".source.python.django":
+  AutoField:
+    prefix: "auto"
+    body: "${1:FIELDNAME} = models.AutoField()"
+  BooleanField:
+    prefix: "boolean"
+    body: "${1:FIELDNAME} = models.BooleanField(${2:default=True})"
+  CharField:
+    prefix: "char"
+    body: "${1:FIELDNAME} = models.CharField(${2:blank=True}, max_length=${3:100})"
+  CommaSeparatedIntegerField:
+    prefix: "commaseparatedinteger"
+    body: "${1:FIELDNAME} = models.CommaSeparatedIntegerField(max_length=$2)"
+  DateField:
+    prefix: "date"
+    body: "${1:FIELDNAME} = models.DateField(${2:default=datetime.datetime.today})"
+  DateTimeField:
+    prefix: "datetime"
+    body: "${1:FIELDNAME} = models.DateTimeField(${2:blank=True}${3:, default=datetime.datetime.now})"
+  DecimalField:
+    prefix: "decimal"
+    body: "${1:FIELDNAME} = models.DecimalField(max_digits=$2, decimal_places=$3)"
+  EmailField:
+    prefix: "email"
+    body: "${1:FIELDNAME} = models.EmailField()"
+  FileField:
+    prefix: "file"
+    body: "${1:FIELDNAME} = models.FileField(upload_to=${1:/path/for/upload})"
+  FilePathField:
+    prefix: "filepath"
+    body: "${1:FIELDNAME} = models.FilePathField(path=\"${1:/location/of/choices}\"${2:, match=\"${3:regex}\"}${4:, recursive=True})"
+  FloatField:
+    prefix: "float"
+    body: "${1:FIELDNAME} = models.FloatField()"
+  ForeignKey:
+    prefix: "fk"
+    body: "${1:FIELDNAME} = models.ForeignKey(${2:RELATED_MODEL})"
+  IPAddressField:
+    prefix: "ipaddress"
+    body: "${1:FIELDNAME} = models.IPAddressField(${2:blank=True})"
+  ImageField:
+    prefix: "image"
+    body: "${1:FIELDNAME} = models.ImageField(upload_to=\"${2:/dir/path}\"${3:, height_field=$4}${5:, width_field=$6})"
+  IntegerField:
+    prefix: "integer"
+    body: "${1:FIELDNAME} = models.IntegerField(${2:blank=True, null=True})"
+  ManyToManyField:
+    prefix: "manytomany"
+    body: "${1:FIELDNAME} = models.ManyToManyField(${2:RELATED_MODEL})"
+  "Model Skeleton":
+    prefix: "model"
+    body: '''
+      class ${1:Modelname}(models.Model):
+      	"""${2:($1 description)}"""
+      	$0
+      
+      	class Admin:
+      		list_display = ('',)
+      		search_fields = ('',)
+      
+      	def __unicode__(self):
+      		return u"$1"
+      
+    '''
+  NullBooleanField:
+    prefix: "nullboolean"
+    body: "${1:FIELDNAME} = models.NullBooleanField(${2:default=True})"
+  PhoneNumberField:
+    prefix: "phonenumber"
+    body: "${1:FIELDNAME} = models.PhoneNumberField(${2:blank=True})"
+  PositiveIntegerField:
+    prefix: "positiveinteger"
+    body: "${1:FIELDNAME} = models.PositiveIntegerField(${2:blank=True, null=True})"
+  PositiveSmallIntegerField:
+    prefix: "positivesmallinteger"
+    body: "${1:FIELDNAME} = models.PositiveSmallIntegerField(${2:blank=True, null=True})"
+  SlugField:
+    prefix: "slug"
+    body: "${1:slug} = models.SlugField(${2:prepopulate_from=(\"$3\",$4)})"
+  SmallIntegerField:
+    prefix: "smallinteger"
+    body: "${1:FIELDNAME} = models.SmallIntegerField(${2:blank=True, null=True})"
+  TextField:
+    prefix: "text"
+    body: "${1:FIELDNAME} = models.TextField(${2:blank=True})"
+  TimeField:
+    prefix: "time"
+    body: "${1:FIELDNAME} = models.TimeField(${2:blank=True})"
+  URLField:
+    prefix: "url"
+    body: "${1:FIELDNAME} = models.URLField(${2:blank=True}, verify_exists=${3:True})"
+  USStateField:
+    prefix: "usstate"
+    body: "${1:FIELDNAME} = models.USStateField(${2:blank=True})"
+  XMLField:
+    prefix: "xml"
+    body: "${1:FIELDNAME} = models.XMLField(schema_path=${2:/path/to/RelaxNG}${3:, blank=True})"
+  send_mail:
+    prefix: "sendmail"
+    body: '''
+      mail.send_mail("${1:Subject}", "${2:Message}", "${3:from@example.com}", ${4:["to@example.com"]}${5:, fail_silently=True})
+      
+    '''
+".text.html.django":
+  autoescape:
+    prefix: "autoescape"
+    body: '''
+      {% autoescape ${1:off} %}
+      	$2
+      {% endautoescape %}
+    '''
+  block:
+    prefix: "block"
+    body: "{% block $1 %}$2{% endblock $1 %}"
+  blocktrans:
+    prefix: "blocktrans"
+    body: '''
+      {% blocktrans ${1:with ${2:var1} as ${3:var2}} %}
+      	$4{{ $3 }}
+      {% endblocktrans %}
+    '''
+  comment:
+    prefix: "comment"
+    body: '''
+      {% comment %}
+      	$1
+      {% endcomment %}
+    '''
+  cycle:
+    prefix: "cycle"
+    body: "{% cycle $1 as $2 %}"
+  debug:
+    prefix: "debug"
+    body: "{% debug %}"
+  else:
+    prefix: "else"
+    body: "{% else %}"
+  extends:
+    prefix: "extends"
+    body: "{% extends \"$1\" %}"
+  filter:
+    prefix: "filter"
+    body: '''
+      {% filter $1 %}
+      	$2
+      {% endfilter %}
+    '''
+  firstof:
+    prefix: "firstof"
+    body: "{% firstof $1 %}"
+  for:
+    prefix: "for"
+    body: '''
+      {% for $1 in $2 %}
+      	$3
+      {% endfor %}
+    '''
+  if:
+    prefix: "if"
+    body: "{% if $1 %}$0{% endif %}"
+  ifchanged:
+    prefix: "ifchanged"
+    body: "{% ifchanged %}$0{% endifchanged %}"
+  ifequal:
+    prefix: "ifequal"
+    body: "{% ifequal $1 $2 %}$0{% endifequal %}"
+  ifnotequal:
+    prefix: "ifnotequal"
+    body: "{% ifnotequal $1 $2 %}$0{% endifnotequal %}"
+  include:
+    prefix: "include"
+    body: "{% include \"$1\" %}"
+  load:
+    prefix: "load"
+    body: "{% load $1 %}"
+  now:
+    prefix: "now"
+    body: "{% now \"$1\" %}"
+  regroup:
+    prefix: "regroup"
+    body: "{% regroup $1 by $2 as $3 %}"
+  spaceless:
+    prefix: "spaceless"
+    body: "{% spaceless %}$0{% endspaceless %}"
+  ssi:
+    prefix: "ssi"
+    body: "{% ssi $1 ${2:parsed} %}"
+  super:
+    prefix: "super"
+    body: "{{ block.super }}"
+  "templatetag: closeblock":
+    prefix: "%}"
+    body: "{% templatetag closeblock %}"
+  "templatetag: closevariable":
+    prefix: "}}"
+    body: "{% templatetag closevariable %}"
+  "templatetag: openblock":
+    prefix: "{%"
+    body: "{% templatetag openblock %}"
+  "templatetag: openvariable":
+    prefix: "{{"
+    body: "{% templatetag openvariable %}"
+  trans:
+    prefix: "trans"
+    body: "{% trans \"${1:string to translate}\" %}"
+  url:
+    prefix: "url"
+    body: "{% url ${1:package.module.view_fn} ${2:value1,kwarg=value2} %}"
+  widthratio:
+    prefix: "widthratio"
+    body: "{% widthratio ${1:this_value} ${2:max_value} ${3:100} %}"
+  with:
+    prefix: "with"
+    body: "{% with ${1:var} as ${2:name} %}{{ ${3:$2} }}{% endwith %}"
