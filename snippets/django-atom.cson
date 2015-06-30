@@ -5,52 +5,116 @@
   BooleanField:
     prefix: "mboolean"
     body: "${1:FIELDNAME} = models.BooleanField(${2:default=True})"
+  BooleanField:
+    prefix: "fboolean"
+    body: "${1:FIELDNAME} = forms.BooleanField($2)"
   CharField:
     prefix: "mchar"
     body: "${1:FIELDNAME} = models.CharField(${2:blank=True}, max_length=${3:100})"
+  CharField:
+    prefix: "fchar"
+    body: "${1:FIELDNAME} = forms.CharField($2)"
+  ChoiceField:
+    prefix: "fchoice"
+    body: "${1:FIELDNAME} = forms.ChoiceField($2)"
+  ComboField:
+    prefix: "fcombo"
+    body: "${1:FIELDNAME} = forms.ComboField($2)"
   CommaSeparatedIntegerField:
     prefix: "mcommaseparatedinteger"
     body: "${1:FIELDNAME} = models.CommaSeparatedIntegerField(max_length=$2)"
   DateField:
     prefix: "mdate"
     body: "${1:FIELDNAME} = models.DateField(${2:default=datetime.datetime.today})"
+  DateField:
+    prefix: "fdate"
+    body: "${1:FIELDNAME} = forms.DateField($2)"
   DateTimeField:
     prefix: "mdatetime"
     body: "${1:FIELDNAME} = models.DateTimeField(${2:blank=True}${3:, default=datetime.datetime.now})"
+  DateTimeField:
+    prefix: "fdatetime"
+    body: "${1:FIELDNAME} = forms.DateTimeField($2)"
   DecimalField:
     prefix: "mdecimal"
     body: "${1:FIELDNAME} = models.DecimalField(max_digits=$2, decimal_places=$3)"
+  DecimalField:
+    prefix: "fdecimal"
+    body: "${1:FIELDNAME} = forms.DecimalField($2)"
   EmailField:
     prefix: "memail"
-    body: "${1:FIELDNAME} = models.EmailField()"
+    body: "${1:FIELDNAME} = models.EmailField($2)"
+  EmailField:
+    prefix: "femail"
+    body: "${1:FIELDNAME} = forms.EmailField($2)"
   FileField:
     prefix: "mfile"
     body: "${1:FIELDNAME} = models.FileField(upload_to=${1:/path/for/upload})"
+  FileField:
+    prefix: "ffile"
+    body: "${1:FIELDNAME} = forms.FileField($2)"
   FilePathField:
     prefix: "mfilepath"
     body: "${1:FIELDNAME} = models.FilePathField(path=\"${1:/location/of/choices}\"${2:, match=\"${3:regex}\"}${4:, recursive=True})"
+  FilePathField:
+    prefix: "ffilepath"
+    body: "${1:FIELDNAME} = forms.FilePathField($2)"
   FloatField:
     prefix: "mfloat"
     body: "${1:FIELDNAME} = models.FloatField()"
+  FloatField:
+    prefix: "mfloat"
+    body: "${1:FIELDNAME} = forms.FloatField($2)"
   ForeignKey:
     prefix: "fk"
     body: "${1:FIELDNAME} = models.ForeignKey(${2:RELATED_MODEL})"
+  "Form Skeleton":
+    prefix: "form"
+    body: '''
+      class ${1:FORMNAME}Form(forms.form):
+          ${2:# TODO: Define form fields here}
+
+          def __init__(self, *args, **kwargs):
+              super($1Form, self).__init__(*args, **kwargs)
+
+          def clean(self):
+              cleaned_data = super($1Form, self).clean()
+              return cleaned_data
+
+          def save(self):
+              cleaned_data = super($1Form, self).clean()
+    '''
   IPAddressField:
     prefix: "mipaddress"
     body: "${1:FIELDNAME} = models.IPAddressField(${2:blank=True})"
   ImageField:
     prefix: "mimage"
     body: "${1:FIELDNAME} = models.ImageField(upload_to=\"${2:/dir/path}\"${3:, height_field=$4}${5:, width_field=$6})"
+  ImageField:
+    prefix: "fimage"
+    body: "${1:FIELDNAME} = forms.ImageField($2)"
   IntegerField:
     prefix: "minteger"
     body: "${1:FIELDNAME} = models.IntegerField(${2:blank=True, null=True})"
+  IntegerField:
+    prefix: "finteger"
+    body: "${1:FIELDNAME} = forms.IntegerField($2)"
+  IPAddressField:
+    prefix: "fip"
+    body: "${1:FIELDNAME} = forms.IPAddressField($2)"
   ManyToManyField:
     prefix: "m2m"
     body: "${1:FIELDNAME} = models.ManyToManyField(${2:RELATED_MODEL})"
+  ModelChoiceField:
+    prefix: "fmochoice"
+    body: "${1:FIELDNAME} = forms.ModelChoiceField($2)"
+  ModelMultipleChoiceField:
+    prefix: "fmomuchoice"
+    body: "${1:FIELDNAME} = forms.ModelMultipleChoiceField($2)"
   "Model Skeleton":
     prefix: "model"
     body: '''
-      class ${1:Modelname}(models.Model):
+      class ${1:MODELNAME}(models.Model):
           ${2:# TODO: Define fields here}
 
           class Meta:
@@ -60,9 +124,35 @@
           def __unicode__(self):
               pass
     '''
+  "ModelForm Skeleton":
+    prefix: "modelform"
+    body: '''
+      class ${1:FORMNAME}Form(forms.ModelForm):
+          ${3:# TODO: Define other fields here}
+
+          class Meta:
+              model = $1
+              fields = [$2]
+
+          def __init__(self, *args, **kwargs):
+              super($1Form, self).__init__(*args, **kwargs)
+
+          def clean(self):
+              cleaned_data = super($1Form, self).clean()
+              return cleaned_data
+    '''
+  MultipleChoiceField:
+    prefix: "fmuchoice"
+    body: "${1:FIELDNAME} = forms.MultipleChoiceField($2)"
+  MultiValueField:
+    prefix: "fmuval"
+    body: "${1:FIELDNAME} = forms.MultiValueField($2)"
   NullBooleanField:
-    prefix: "mnullboolean"
+    prefix: "mnullbool"
     body: "${1:FIELDNAME} = models.NullBooleanField(${2:default=True})"
+  NullBooleanField:
+    prefix: "fnullbool"
+    body: "${1:FIELDNAME} = forms.NullBooleanField($2)"
   PhoneNumberField:
     prefix: "mphone"
     body: "${1:FIELDNAME} = models.PhoneNumberField(${2:blank=True})"
@@ -72,21 +162,42 @@
   PositiveSmallIntegerField:
     prefix: "mpositivesmallinteger"
     body: "${1:FIELDNAME} = models.PositiveSmallIntegerField(${2:blank=True, null=True})"
+  RegexField:
+    prefix: "fregex"
+    body: "${1:FIELDNAME} = forms.RegexField($2)"
   SlugField:
-    prefix: "slug"
+    prefix: "mslug"
     body: "${1:slug} = models.SlugField(${2:prepopulate_from=(\"$3\",$4)})"
+  SlugField:
+    prefix: "fslug"
+    body: "${1:slug} = forms.SlugField($2)"
   SmallIntegerField:
     prefix: "msmallinteger"
     body: "${1:FIELDNAME} = models.SmallIntegerField(${2:blank=True, null=True})"
+  SplitDateTimeField:
+    prefix: "fsdatetime"
+    body: "${1:FIELDNAME} = forms.SplitDateTimeField($2)"
   TextField:
     prefix: "mtext"
     body: "${1:FIELDNAME} = models.TextField(${2:blank=True})"
   TimeField:
     prefix: "mtime"
     body: "${1:FIELDNAME} = models.TimeField(${2:blank=True})"
+  TimeField:
+    prefix: "ftime"
+    body: "${1:FIELDNAME} = forms.TimeField($2)"
+  TypedChoiceField:
+    prefix: "ftchoice"
+    body: "${1:FIELDNAME} = forms.TypedChoiceField($2)"
+  TypedMultipleChoiceField:
+    prefix: "ftmuchoice"
+    body: "${1:FIELDNAME} = forms.TypedMultipleChoiceField($2)"
   URLField:
     prefix: "murl"
     body: "${1:FIELDNAME} = models.URLField(${2:blank=True}, verify_exists=${3:True})"
+  URLField:
+    prefix: "furl"
+    body: "${1:FIELDNAME} = forms.URLField($2)"
   USStateField:
     prefix: "musstate"
     body: "${1:FIELDNAME} = models.USStateField(${2:blank=True})"
