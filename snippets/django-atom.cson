@@ -1,4 +1,5 @@
 ".source.python.django":
+  #Field Snippets
   AutoField:
     prefix: "mauto"
     body: "${1:FIELDNAME} = models.AutoField()"
@@ -71,23 +72,6 @@
   ForeignKey:
     prefix: "fk"
     body: "${1:FIELDNAME} = models.ForeignKey(${2:RELATED_MODEL})"
-  "Form Skeleton":
-    prefix: "form"
-    body: '''
-      class ${1:FORMNAME}Form(forms.form):
-          ${2:# TODO: Define form fields here}
-
-          def __init__(self, *args, **kwargs):
-              super($1Form, self).__init__(*args, **kwargs)
-
-          def clean(self):
-              cleaned_data = super($1Form, self).clean()
-              return cleaned_data
-
-          def save(self):
-              cleaned_data = super($1Form, self).clean()
-    '''
-
   ImageField:
     prefix: "mimg"
     body: "${1:FIELDNAME} = models.ImageField(upload_to=\"${2:/dir/path}\"${3:, height_field=$4}${5:, width_field=$6})"
@@ -115,36 +99,6 @@
   ModelMultipleChoiceField:
     prefix: "fmomuchoice"
     body: "${1:FIELDNAME} = forms.ModelMultipleChoiceField($2)"
-  "Model Skeleton":
-    prefix: "model"
-    body: '''
-      class ${1:MODELNAME}(models.Model):
-          ${2:# TODO: Define fields here}
-
-          class Meta:
-              verbose_name = '$1'
-              verbose_name_plural = '$1s'
-
-          def __unicode__(self):
-              pass
-    '''
-  "ModelForm Skeleton":
-    prefix: "modelform"
-    body: '''
-      class ${1:FORMNAME}Form(forms.ModelForm):
-          ${3:# TODO: Define other fields here}
-
-          class Meta:
-              model = $1
-              fields = [$2]
-
-          def __init__(self, *args, **kwargs):
-              super($1Form, self).__init__(*args, **kwargs)
-
-          def clean(self):
-              cleaned_data = super($1Form, self).clean()
-              return cleaned_data
-    '''
   MultipleChoiceField:
     prefix: "fmuchoice"
     body: "${1:FIELDNAME} = forms.MultipleChoiceField($2)"
@@ -212,7 +166,116 @@
     prefix: "sendmail"
     body: '''
       mail.send_mail("${1:Subject}", "${2:Message}", "${3:from@example.com}", ${4:["to@example.com"]}${5:, fail_silently=True})
+    '''
+  #Skeleton Snippets
+  "Form Skeleton":
+    prefix: "form"
+    body: '''
+      class ${1:FORMNAME}Form(forms.form):
+          ${2:# TODO: Define form fields here}
 
+          def __init__(self, *args, **kwargs):
+              super($1Form, self).__init__(*args, **kwargs)
+
+          def clean(self):
+              cleaned_data = super($1Form, self).clean()
+              return cleaned_data
+
+          def save(self):
+              cleaned_data = super($1Form, self).clean()
+    '''
+  "Model Skeleton":
+    prefix: "model"
+    body: '''
+      class ${1:MODELNAME}(models.Model):
+          ${2:# TODO: Define fields here}
+
+          class Meta:
+              verbose_name = '$1'
+              verbose_name_plural = '$1s'
+
+          def __unicode__(self):
+              pass
+    '''
+  "ModelForm Skeleton":
+    prefix: "modelform"
+    body: '''
+      class ${1:FORMNAME}Form(forms.ModelForm):
+          ${3:# TODO: Define other fields here}
+
+          class Meta:
+              model = $1
+              fields = [$2]
+
+          def __init__(self, *args, **kwargs):
+              super($1Form, self).__init__(*args, **kwargs)
+
+          def clean(self):
+              cleaned_data = super($1Form, self).clean()
+              return cleaned_data
+    '''
+  View:
+    prefix: "fview"
+    body: "def ${1:VIEWNAME}(request):"
+  # CCBV Snippets
+  CreateView:
+    prefix: "createview"
+    body: '''
+      class ${1:MODELNAME}CreateView(CreateView):
+          model = ${1:MODELNAME}
+          template_name = '${2:TEMPLATE_NAME}'
+    '''
+  DeleteView:
+    prefix: "deleteview"
+    body: '''
+      class ${1:MODELNAME}DeleteView(DeleteView):
+          model = ${1:MODELNAME}
+          template_name = '${2:TEMPLATE_NAME}'
+    '''
+  DetailView:
+    prefix: "deleteview"
+    body: '''
+      class ${1:MODELNAME}DetailView(DetailView):
+          model = ${1:MODELNAME}
+          slug_field = '${2:SLUG_FIELD}'
+          slug_url_kwarg = '${3:SLUG_URL_KWARG}'
+          success_url = '${4:SUCCESS_URL}'
+          template_name = '${5:TEMPLATE_NAME}'
+    '''
+  ListView:
+    prefix: "deleteview"
+    body: '''
+      class ${1:MODELNAME}ListView(ListView):
+          context_object_name = '${2:CONTEXT_OBJECT_NAME}'
+          model = ${1:MODELNAME}
+          page_kwarg = 'page'
+          paginate_by = $3
+          template_name = '${4:TEMPLATE_NAME}'
+    '''
+  TemplateView:
+    prefix: "templateview"
+    body: '''
+      class ${1:CLASSNAME}TemplateView(TemplateView):
+          template_name = '${2:TEMPLATE_NAME}'
+    '''
+  UpdateView:
+    prefix: "templateview"
+    body: '''
+      class ${1:MODELNAME}UpdateView(UpdateView):
+          model = ${1:MODELNAME}
+          template_name = '${2:TEMPLATE_NAME}'
+    '''
+  View:
+    prefix: "cbview"
+    body: '''
+      class ${1:CLASSNAME}View(View):
+          template_name = '${2:TEMPLATE_NAME}'
+
+          def get(self, request):
+              pass
+
+          def post(self, request):
+              pass
     '''
 ".text.html.django":
   autoescape:
