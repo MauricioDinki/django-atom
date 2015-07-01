@@ -1,7 +1,7 @@
 {
   "name": "django-atom",
   "version": "0.1.0",
-  "description": "A short description of your package",
+  "description": "Django Support for Atom",
   "keywords": [],
   "repository": "https://github.com/MauricioDinki/django-atom",
   "license": "MIT",
