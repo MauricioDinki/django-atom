@@ -1,1 +1,1 @@
-# django-atom package
+# Django Support for Atom
