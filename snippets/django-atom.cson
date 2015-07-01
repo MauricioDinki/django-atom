@@ -2,11 +2,14 @@
   AutoField:
     prefix: "mauto"
     body: "${1:FIELDNAME} = models.AutoField()"
+  BigIntegerField:
+    prefix: "mbigint"
+    body: "${1:FIELDNAME} = models.BigIntegerField($2)"
   BooleanField:
-    prefix: "mboolean"
+    prefix: "mbool"
     body: "${1:FIELDNAME} = models.BooleanField(${2:default=True})"
   BooleanField:
-    prefix: "fboolean"
+    prefix: "fbool"
     body: "${1:FIELDNAME} = forms.BooleanField($2)"
   CharField:
     prefix: "mchar"
@@ -21,7 +24,7 @@
     prefix: "fcombo"
     body: "${1:FIELDNAME} = forms.ComboField($2)"
   CommaSeparatedIntegerField:
-    prefix: "mcommaseparatedinteger"
+    prefix: "mcoseint"
     body: "${1:FIELDNAME} = models.CommaSeparatedIntegerField(max_length=$2)"
   DateField:
     prefix: "mdate"
@@ -84,21 +87,22 @@
           def save(self):
               cleaned_data = super($1Form, self).clean()
     '''
-  IPAddressField:
-    prefix: "mipaddress"
-    body: "${1:FIELDNAME} = models.IPAddressField(${2:blank=True})"
+
   ImageField:
-    prefix: "mimage"
+    prefix: "mimg"
     body: "${1:FIELDNAME} = models.ImageField(upload_to=\"${2:/dir/path}\"${3:, height_field=$4}${5:, width_field=$6})"
   ImageField:
-    prefix: "fimage"
+    prefix: "fimg"
     body: "${1:FIELDNAME} = forms.ImageField($2)"
   IntegerField:
-    prefix: "minteger"
+    prefix: "mint"
     body: "${1:FIELDNAME} = models.IntegerField(${2:blank=True, null=True})"
   IntegerField:
-    prefix: "finteger"
+    prefix: "fint"
     body: "${1:FIELDNAME} = forms.IntegerField($2)"
+  IPAddressField:
+    prefix: "mip"
+    body: "${1:FIELDNAME} = models.IPAddressField(${2:blank=True})"
   IPAddressField:
     prefix: "fip"
     body: "${1:FIELDNAME} = forms.IPAddressField($2)"
@@ -157,10 +161,10 @@
     prefix: "mphone"
     body: "${1:FIELDNAME} = models.PhoneNumberField(${2:blank=True})"
   PositiveIntegerField:
-    prefix: "mpositiveinteger"
+    prefix: "mposint"
     body: "${1:FIELDNAME} = models.PositiveIntegerField(${2:blank=True, null=True})"
   PositiveSmallIntegerField:
-    prefix: "mpositivesmallinteger"
+    prefix: "mpossmallint"
     body: "${1:FIELDNAME} = models.PositiveSmallIntegerField(${2:blank=True, null=True})"
   RegexField:
     prefix: "fregex"
@@ -172,7 +176,7 @@
     prefix: "fslug"
     body: "${1:slug} = forms.SlugField($2)"
   SmallIntegerField:
-    prefix: "msmallinteger"
+    prefix: "msmallint"
     body: "${1:FIELDNAME} = models.SmallIntegerField(${2:blank=True, null=True})"
   SplitDateTimeField:
     prefix: "fsdatetime"
