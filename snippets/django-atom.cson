@@ -302,6 +302,9 @@
     	   $1
       {% endcomment %}
     '''
+  csrf:
+    prefix: "csrf"
+    body: "{% csrf_token %}"
   cycle:
     prefix: "cycle"
     body: "{% cycle $1 as $2 %}"
@@ -329,6 +332,13 @@
     body: "{% firstof $1 %}"
   for:
     prefix: "for"
+    body: '''
+      {% for $1 in $2 %}
+          $3
+      {% endfor %}
+    '''
+  fore:
+    prefix: "fore"
     body: '''
       {% for $1 in $2 %}
           $3
@@ -366,27 +376,21 @@
   ssi:
     prefix: "ssi"
     body: "{% ssi $1 ${2:parsed} %}"
+  static:
+    prefix: "static"
+    body: "{% static $1 %}"
   super:
     prefix: "super"
     body: "{{ block.super }}"
-  "templatetag: closeblock":
-    prefix: "%}"
-    body: "{% templatetag closeblock %}"
-  "templatetag: closevariable":
-    prefix: "}}"
-    body: "{% templatetag closevariable %}"
-  "templatetag: openblock":
-    prefix: "{%"
-    body: "{% templatetag openblock %}"
-  "templatetag: openvariable":
-    prefix: "{{"
-    body: "{% templatetag openvariable %}"
+  templatetag:
+    prefix: "templatetag"
+    body: "{% templatetag %}"
   trans:
     prefix: "trans"
     body: "{% trans \"${1:string to translate}\" %}"
-  url:
-    prefix: "url"
-    body: "{% url ${1:package.module.view_fn} ${2:value1,kwarg=value2} %}"
+  verbatim:
+    prefix: "verbatim"
+    body: "{% verbatim %} $1 {% endverbatim %}"
   widthratio:
     prefix: "widthratio"
     body: "{% widthratio ${1:this_value} ${2:max_value} ${3:100} %}"
