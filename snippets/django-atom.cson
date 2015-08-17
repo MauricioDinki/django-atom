@@ -1,4 +1,6 @@
 ".source.python.django":
+  # Model fields
+
   "Model AutoField":
     prefix: "mauto"
     body: "${1:FIELDNAME} = models.AutoField()"
@@ -8,12 +10,87 @@
   "Model BooleanField":
     prefix: "mbool"
     body: "${1:FIELDNAME} = models.BooleanField(${2:default=True})"
-  "Form BooleanField":
-    prefix: "fbool"
-    body: "${1:FIELDNAME} = forms.BooleanField($2)"
   "Model CharField":
     prefix: "mchar"
     body: "${1:FIELDNAME} = models.CharField(${2:blank=True}, max_length=${3:100})"
+  "Model CommaSeparatedIntegerField":
+    prefix: "mcoseint"
+    body: "${1:FIELDNAME} = models.CommaSeparatedIntegerField(max_length=$2)"
+  "Model DateField":
+    prefix: "mdate"
+    body: "${1:FIELDNAME} = models.DateField(${2:default=datetime.datetime.today})"
+  "Model DateTimeField":
+    prefix: "mdatetime"
+    body: "${1:FIELDNAME} = models.DateTimeField(${2:blank=True}${3:, default=datetime.datetime.now})"
+  "Model DecimalField":
+    prefix: "mdecimal"
+    body: "${1:FIELDNAME} = models.DecimalField(max_digits=$2, decimal_places=$3)"
+  "Model EmailField":
+    prefix: "memail"
+    body: "${1:FIELDNAME} = models.EmailField($2)"
+  "Model FileField":
+    prefix: "mfile"
+    body: "${1:FIELDNAME} = models.FileField(upload_to=${1:/path/for/upload})"
+  "Model FilePathField":
+    prefix: "mfilepath"
+    body: "${1:FIELDNAME} = models.FilePathField(path=\"${1:/location/of/choices}\"${2:, match=\"${3:regex}\"}${4:, recursive=True})"
+  "Model FloatField":
+    prefix: "mfloat"
+    body: "${1:FIELDNAME} = models.FloatField($2)"
+  "Model ForeignKey":
+    prefix: "fk"
+    body: "${1:FIELDNAME} = models.ForeignKey(${2:RELATED_MODEL})"
+  "Model ImageField":
+    prefix: "mimg"
+    body: "${1:FIELDNAME} = models.ImageField(upload_to=\"${2:/dir/path}\"${3:, height_field=$4}${5:, width_field=$6})"
+  "Model IntegerField":
+    prefix: "mint"
+    body: "${1:FIELDNAME} = models.IntegerField(${2:blank=True, null=True})"
+  "Model IPAddressField":
+    prefix: "mip"
+    body: "${1:FIELDNAME} = models.IPAddressField(${2:blank=True})"
+  "Model ManyToManyField":
+    prefix: "m2m"
+    body: "${1:FIELDNAME} = models.ManyToManyField(${2:RELATED_MODEL})"
+  "Model NullBooleanField":
+    prefix: "mnullbool"
+    body: "${1:FIELDNAME} = models.NullBooleanField(${2:default=True})"
+  "Model OneToOneField":
+    prefix: "o2o"
+    body: "${1:FIELDNAME} = models.OneToOneField(${2:RELATED_MODEL})"
+  "Model PhoneNumberField":
+    prefix: "mphone"
+    body: "${1:FIELDNAME} = models.PhoneNumberField(${2:blank=True})"
+  "Model PositiveIntegerField":
+    prefix: "mposint"
+    body: "${1:FIELDNAME} = models.PositiveIntegerField(${2:blank=True, null=True})"
+  "Model PositiveSmallIntegerField":
+    prefix: "mpossmallint"
+    body: "${1:FIELDNAME} = models.PositiveSmallIntegerField(${2:blank=True, null=True})"
+  "Model SlugField":
+    prefix: "mslug"
+    body: "${1:slug} = models.SlugField(${2:prepopulate_from=(\"$3\",$4)})"
+  "Model SmallIntegerField":
+    prefix: "msmallint"
+    body: "${1:FIELDNAME} = models.SmallIntegerField(${2:blank=True, null=True})"
+  "Model TextField":
+    prefix: "mtext"
+    body: "${1:FIELDNAME} = models.TextField(${2:blank=True})"
+  "Model TimeField":
+    prefix: "mtime"
+    body: "${1:FIELDNAME} = models.TimeField(${2:blank=True})"
+  "Model URLField":
+    prefix: "murl"
+    body: "${1:FIELDNAME} = models.URLField(${2:blank=True}, verify_exists=${3:True})"
+  "Model USStateField":
+    prefix: "musstate"
+    body: "${1:FIELDNAME} = models.USStateField(${2:blank=True})"
+  "Model XMLField":
+    prefix: "mxml"
+    body: "${1:FIELDNAME} = models.XMLField(schema_path=${2:/path/to/RelaxNG}${3:, blank=True})"
+
+  # Form fields
+
   "Form CharField":
     prefix: "fchar"
     body: "${1:FIELDNAME} = forms.CharField($2)"
@@ -23,75 +100,36 @@
   "Form ComboField":
     prefix: "fcombo"
     body: "${1:FIELDNAME} = forms.ComboField($2)"
-  "Model CommaSeparatedIntegerField":
-    prefix: "mcoseint"
-    body: "${1:FIELDNAME} = models.CommaSeparatedIntegerField(max_length=$2)"
-  "Model DateField":
-    prefix: "mdate"
-    body: "${1:FIELDNAME} = models.DateField(${2:default=datetime.datetime.today})"
   "Form DateField":
     prefix: "fdate"
     body: "${1:FIELDNAME} = forms.DateField($2)"
-  "Model DateTimeField":
-    prefix: "mdatetime"
-    body: "${1:FIELDNAME} = models.DateTimeField(${2:blank=True}${3:, default=datetime.datetime.now})"
   "Form DateTimeField":
     prefix: "fdatetime"
     body: "${1:FIELDNAME} = forms.DateTimeField($2)"
-  "Model DecimalField":
-    prefix: "mdecimal"
-    body: "${1:FIELDNAME} = models.DecimalField(max_digits=$2, decimal_places=$3)"
   "Form DecimalField":
     prefix: "fdecimal"
     body: "${1:FIELDNAME} = forms.DecimalField($2)"
-  "Model EmailField":
-    prefix: "memail"
-    body: "${1:FIELDNAME} = models.EmailField($2)"
   "Form EmailField":
     prefix: "femail"
     body: "${1:FIELDNAME} = forms.EmailField($2)"
-  "Model FileField":
-    prefix: "mfile"
-    body: "${1:FIELDNAME} = models.FileField(upload_to=${1:/path/for/upload})"
   "Form FileField":
     prefix: "ffile"
     body: "${1:FIELDNAME} = forms.FileField($2)"
-  "Model FilePathField":
-    prefix: "mfilepath"
-    body: "${1:FIELDNAME} = models.FilePathField(path=\"${1:/location/of/choices}\"${2:, match=\"${3:regex}\"}${4:, recursive=True})"
   "Form FilePathField":
     prefix: "ffilepath"
     body: "${1:FIELDNAME} = forms.FilePathField($2)"
-  "Model FloatField":
-    prefix: "mfloat"
-    body: "${1:FIELDNAME} = models.FloatField()"
-  "Model FloatField":
+  "Form FloatField":
     prefix: "mfloat"
     body: "${1:FIELDNAME} = forms.FloatField($2)"
-  "Model ForeignKey":
-    prefix: "fk"
-    body: "${1:FIELDNAME} = models.ForeignKey(${2:RELATED_MODEL})"
-  "Model ImageField":
-    prefix: "mimg"
-    body: "${1:FIELDNAME} = models.ImageField(upload_to=\"${2:/dir/path}\"${3:, height_field=$4}${5:, width_field=$6})"
   "Form ImageField":
     prefix: "fimg"
     body: "${1:FIELDNAME} = forms.ImageField($2)"
-  "Model IntegerField":
-    prefix: "mint"
-    body: "${1:FIELDNAME} = models.IntegerField(${2:blank=True, null=True})"
   "Form IntegerField":
     prefix: "fint"
     body: "${1:FIELDNAME} = forms.IntegerField($2)"
-  "Model IPAddressField":
-    prefix: "mip"
-    body: "${1:FIELDNAME} = models.IPAddressField(${2:blank=True})"
   "Form IPAddressField":
     prefix: "fip"
     body: "${1:FIELDNAME} = forms.IPAddressField($2)"
-  "Model ManyToManyField":
-    prefix: "m2m"
-    body: "${1:FIELDNAME} = models.ManyToManyField(${2:RELATED_MODEL})"
   "Form ModelChoiceField":
     prefix: "fmochoice"
     body: "${1:FIELDNAME} = forms.ModelChoiceField($2)"
@@ -104,42 +142,18 @@
   "Form MultiValueField":
     prefix: "fmuval"
     body: "${1:FIELDNAME} = forms.MultiValueField($2)"
-  "Model NullBooleanField":
-    prefix: "mnullbool"
-    body: "${1:FIELDNAME} = models.NullBooleanField(${2:default=True})"
   "Form NullBooleanField":
     prefix: "fnullbool"
     body: "${1:FIELDNAME} = forms.NullBooleanField($2)"
-  "Model PhoneNumberField":
-    prefix: "mphone"
-    body: "${1:FIELDNAME} = models.PhoneNumberField(${2:blank=True})"
-  "Model PositiveIntegerField":
-    prefix: "mposint"
-    body: "${1:FIELDNAME} = models.PositiveIntegerField(${2:blank=True, null=True})"
-  "Model PositiveSmallIntegerField":
-    prefix: "mpossmallint"
-    body: "${1:FIELDNAME} = models.PositiveSmallIntegerField(${2:blank=True, null=True})"
   "Form RegexField":
     prefix: "fregex"
     body: "${1:FIELDNAME} = forms.RegexField($2)"
-  "Model SlugField":
-    prefix: "mslug"
-    body: "${1:slug} = models.SlugField(${2:prepopulate_from=(\"$3\",$4)})"
   "Form SlugField":
     prefix: "fslug"
     body: "${1:slug} = forms.SlugField($2)"
-  "Model SmallIntegerField":
-    prefix: "msmallint"
-    body: "${1:FIELDNAME} = models.SmallIntegerField(${2:blank=True, null=True})"
   "Form SplitDateTimeField":
     prefix: "fsdatetime"
     body: "${1:FIELDNAME} = forms.SplitDateTimeField($2)"
-  "Model TextField":
-    prefix: "mtext"
-    body: "${1:FIELDNAME} = models.TextField(${2:blank=True})"
-  "Model TimeField":
-    prefix: "mtime"
-    body: "${1:FIELDNAME} = models.TimeField(${2:blank=True})"
   "Form TimeField":
     prefix: "ftime"
     body: "${1:FIELDNAME} = forms.TimeField($2)"
@@ -149,26 +163,12 @@
   "Form TypedMultipleChoiceField":
     prefix: "ftmuchoice"
     body: "${1:FIELDNAME} = forms.TypedMultipleChoiceField($2)"
-  "Model URLField":
-    prefix: "murl"
-    body: "${1:FIELDNAME} = models.URLField(${2:blank=True}, verify_exists=${3:True})"
   "Form URLField":
     prefix: "furl"
     body: "${1:FIELDNAME} = forms.URLField($2)"
-  "Model USStateField":
-    prefix: "musstate"
-    body: "${1:FIELDNAME} = models.USStateField(${2:blank=True})"
-  "Model XMLField":
-    prefix: "mxml"
-    body: "${1:FIELDNAME} = models.XMLField(schema_path=${2:/path/to/RelaxNG}${3:, blank=True})"
-  send_mail:
-    prefix: "sendmail"
-    body: '''
-      mail.send_mail("${1:Subject}", "${2:Message}", "${3:from@example.com}", ${4:["to@example.com"]}${5:, fail_silently=True})
-    '''
-  URL:
-    prefix: "url"
-    body: "url(r'^${1:URLPARENT}/$', $2, name='${3:URLNAME}',),"
+
+  # Skeletons
+
   "Form Skeleton":
     prefix: "form"
     body: '''
@@ -184,6 +184,12 @@
 
           def save(self):
               cleaned_data = super($1Form, self).clean()
+    '''
+  "Function View":
+    prefix: "fview"
+    body: '''
+      def ${1:VIEWNAME}(request):
+          ${2:pass}
     '''
   "Model Skeleton":
     prefix: "model"
@@ -215,24 +221,24 @@
               cleaned_data = super($1Form, self).clean()
               return cleaned_data
     '''
-  "Function View":
-    prefix: "fview"
-    body: "def ${1:VIEWNAME}(request):"
-  CreateView:
+
+  # Class Based Views
+
+  "CreateView":
     prefix: "createview"
     body: '''
       class ${1:MODELNAME}CreateView(CreateView):
           model = ${1:MODELNAME}
           template_name = '${2:TEMPLATE_NAME}'
     '''
-  DeleteView:
+  "DeleteView":
     prefix: "deleteview"
     body: '''
       class ${1:MODELNAME}DeleteView(DeleteView):
           model = ${1:MODELNAME}
           template_name = '${2:TEMPLATE_NAME}'
     '''
-  DetailView:
+  "DetailView":
     prefix: "detailview"
     body: '''
       class ${1:MODELNAME}DetailView(DetailView):
@@ -242,7 +248,7 @@
           success_url = '${4:SUCCESS_URL}'
           template_name = '${5:TEMPLATE_NAME}'
     '''
-  ListView:
+  "ListView":
     prefix: "listview"
     body: '''
       class ${1:MODELNAME}ListView(ListView):
@@ -252,20 +258,20 @@
           paginate_by = $3
           template_name = '${4:TEMPLATE_NAME}'
     '''
-  TemplateView:
+  "TemplateView":
     prefix: "templateview"
     body: '''
       class ${1:CLASSNAME}TemplateView(TemplateView):
           template_name = '${2:TEMPLATE_NAME}'
     '''
-  UpdateView:
+  "UpdateView":
     prefix: "updateview"
     body: '''
       class ${1:MODELNAME}UpdateView(UpdateView):
           model = ${1:MODELNAME}
           template_name = '${2:TEMPLATE_NAME}'
     '''
-  "Class View":
+  "Class Based View":
     prefix: "cbview"
     body: '''
       class ${1:CLASSNAME}View(View):
@@ -277,6 +283,30 @@
           def post(self, request):
               pass
     '''
+
+  # Util Snippets
+
+  "__init__":
+    prefix: "init"
+    body: "__init__(self, *args, **kwargs)"
+  "ipdb":
+    prefix: "ipdb"
+    body: "ipdb.set_trace()"
+  "pdb":
+    prefix: "pdb"
+    body: "pdb.set_trace()"
+  "Send Mail":
+    prefix: "sendmail"
+    body: '''
+      mail.send_mail("${1:Subject}", "${2:Message}", "${3:from@example.com}", ${4:["to@example.com"]}${5:, fail_silently=True})
+    '''
+  "Traceback":
+    prefix: "traceback"
+    body: "traceback.print_exc()"
+  "URL":
+    prefix: "url"
+    body: "url(regex=r'^${1:URLPARENT}/$', view=${1:VIEW}, name='${3:URLNAME}'),"
+
 ".text.html.django":
   autoescape:
     prefix: "autoescape"
