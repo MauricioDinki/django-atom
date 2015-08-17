@@ -20,6 +20,16 @@ $ apm install django-atom
 * Fixed bug in django shortcuts color syntax
 * Color syntax in settings constants
 
+### 0.2.3
+
+* Color syntax in html templates
+
+### 0.2.4
+
+* Fixed bugs in template syntax color
+* Working with Skeletons is easier
+* Add utils Snippets
+
 #### Django Template Snippets
 
 Abbreviation | Tag
@@ -156,6 +166,7 @@ sendmail     | ``mail.send_mail()``
 traceback    | ``TemplateView Skeleton``
 updateview   | ``traceback.print_exc()``
 url          | ``URL structure``
+var          | ``{{  }}``
 
 
 ## License

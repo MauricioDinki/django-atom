@@ -3,166 +3,166 @@
 
   "Model AutoField":
     prefix: "mauto"
-    body: "${1:FIELDNAME} = models.AutoField()"
+    body: "${1:FIELDNAME} = models.AutoField($2)$0"
   "Model BigIntegerField":
     prefix: "mbigint"
-    body: "${1:FIELDNAME} = models.BigIntegerField($2)"
+    body: "${1:FIELDNAME} = models.BigIntegerField($2)$0"
   "Model BooleanField":
     prefix: "mbool"
-    body: "${1:FIELDNAME} = models.BooleanField(${2:default=True})"
+    body: "${1:FIELDNAME} = models.BooleanField(${2:default=True})$0"
   "Model CharField":
     prefix: "mchar"
-    body: "${1:FIELDNAME} = models.CharField(${2:blank=True}, max_length=${3:100})"
+    body: "${1:FIELDNAME} = models.CharField(${2:blank=True}, max_length=${3:100})$0"
   "Model CommaSeparatedIntegerField":
     prefix: "mcoseint"
-    body: "${1:FIELDNAME} = models.CommaSeparatedIntegerField(max_length=$2)"
+    body: "${1:FIELDNAME} = models.CommaSeparatedIntegerField(max_length=$2)$0"
   "Model DateField":
     prefix: "mdate"
-    body: "${1:FIELDNAME} = models.DateField(${2:default=datetime.datetime.today})"
+    body: "${1:FIELDNAME} = models.DateField(${2:default=datetime.datetime.today})$0"
   "Model DateTimeField":
     prefix: "mdatetime"
-    body: "${1:FIELDNAME} = models.DateTimeField(${2:blank=True}${3:, default=datetime.datetime.now})"
+    body: "${1:FIELDNAME} = models.DateTimeField(${2:blank=True}${3:, default=datetime.datetime.now})$0"
   "Model DecimalField":
     prefix: "mdecimal"
-    body: "${1:FIELDNAME} = models.DecimalField(max_digits=$2, decimal_places=$3)"
+    body: "${1:FIELDNAME} = models.DecimalField(max_digits=$2, decimal_places=$3)$0"
   "Model EmailField":
     prefix: "memail"
-    body: "${1:FIELDNAME} = models.EmailField($2)"
+    body: "${1:FIELDNAME} = models.EmailField($2)$0"
   "Model FileField":
     prefix: "mfile"
-    body: "${1:FIELDNAME} = models.FileField(upload_to=${1:/path/for/upload})"
+    body: "${1:FIELDNAME} = models.FileField(upload_to=${1:/path/for/upload})$0"
   "Model FilePathField":
     prefix: "mfilepath"
-    body: "${1:FIELDNAME} = models.FilePathField(path=\"${1:/location/of/choices}\"${2:, match=\"${3:regex}\"}${4:, recursive=True})"
+    body: "${1:FIELDNAME} = models.FilePathField(path=\"${1:/location/of/choices}\"${2:, match=\"${3:regex}\"}${4:, recursive=True})$0"
   "Model FloatField":
     prefix: "mfloat"
-    body: "${1:FIELDNAME} = models.FloatField($2)"
+    body: "${1:FIELDNAME} = models.FloatField($2)$0"
   "Model ForeignKey":
     prefix: "fk"
-    body: "${1:FIELDNAME} = models.ForeignKey(${2:RELATED_MODEL})"
+    body: "${1:FIELDNAME} = models.ForeignKey(${2:RELATED_MODEL})$0"
   "Model ImageField":
     prefix: "mimg"
-    body: "${1:FIELDNAME} = models.ImageField(upload_to=\"${2:/dir/path}\"${3:, height_field=$4}${5:, width_field=$6})"
+    body: "${1:FIELDNAME} = models.ImageField(upload_to=\"${2:/dir/path}\"${3:, height_field=$4}${5:, width_field=$6})$0"
   "Model IntegerField":
     prefix: "mint"
-    body: "${1:FIELDNAME} = models.IntegerField(${2:blank=True, null=True})"
+    body: "${1:FIELDNAME} = models.IntegerField(${2:blank=True, null=True})$0"
   "Model IPAddressField":
     prefix: "mip"
-    body: "${1:FIELDNAME} = models.IPAddressField(${2:blank=True})"
+    body: "${1:FIELDNAME} = models.IPAddressField(${2:blank=True})$0"
   "Model ManyToManyField":
     prefix: "m2m"
-    body: "${1:FIELDNAME} = models.ManyToManyField(${2:RELATED_MODEL})"
+    body: "${1:FIELDNAME} = models.ManyToManyField(${2:RELATED_MODEL})$0"
   "Model NullBooleanField":
     prefix: "mnullbool"
-    body: "${1:FIELDNAME} = models.NullBooleanField(${2:default=True})"
+    body: "${1:FIELDNAME} = models.NullBooleanField(${2:default=True})$0"
   "Model OneToOneField":
     prefix: "o2o"
-    body: "${1:FIELDNAME} = models.OneToOneField(${2:RELATED_MODEL})"
+    body: "${1:FIELDNAME} = models.OneToOneField(${2:RELATED_MODEL})$0"
   "Model PhoneNumberField":
     prefix: "mphone"
-    body: "${1:FIELDNAME} = models.PhoneNumberField(${2:blank=True})"
+    body: "${1:FIELDNAME} = models.PhoneNumberField(${2:blank=True})$0"
   "Model PositiveIntegerField":
     prefix: "mposint"
-    body: "${1:FIELDNAME} = models.PositiveIntegerField(${2:blank=True, null=True})"
+    body: "${1:FIELDNAME} = models.PositiveIntegerField(${2:blank=True, null=True})$0"
   "Model PositiveSmallIntegerField":
     prefix: "mpossmallint"
-    body: "${1:FIELDNAME} = models.PositiveSmallIntegerField(${2:blank=True, null=True})"
+    body: "${1:FIELDNAME} = models.PositiveSmallIntegerField(${2:blank=True, null=True})$0"
   "Model SlugField":
     prefix: "mslug"
-    body: "${1:slug} = models.SlugField(${2:prepopulate_from=(\"$3\",$4)})"
+    body: "${1:slug} = models.SlugField(${2:prepopulate_from=(\"$3\",$4)})$0"
   "Model SmallIntegerField":
     prefix: "msmallint"
-    body: "${1:FIELDNAME} = models.SmallIntegerField(${2:blank=True, null=True})"
+    body: "${1:FIELDNAME} = models.SmallIntegerField(${2:blank=True, null=True})$0"
   "Model TextField":
     prefix: "mtext"
-    body: "${1:FIELDNAME} = models.TextField(${2:blank=True})"
+    body: "${1:FIELDNAME} = models.TextField(${2:blank=True})$0"
   "Model TimeField":
     prefix: "mtime"
-    body: "${1:FIELDNAME} = models.TimeField(${2:blank=True})"
+    body: "${1:FIELDNAME} = models.TimeField(${2:blank=True})$0"
   "Model URLField":
     prefix: "murl"
-    body: "${1:FIELDNAME} = models.URLField(${2:blank=True}, verify_exists=${3:True})"
+    body: "${1:FIELDNAME} = models.URLField(${2:blank=True}, verify_exists=${3:True})$0"
   "Model USStateField":
     prefix: "musstate"
-    body: "${1:FIELDNAME} = models.USStateField(${2:blank=True})"
+    body: "${1:FIELDNAME} = models.USStateField(${2:blank=True})$0"
   "Model XMLField":
     prefix: "mxml"
-    body: "${1:FIELDNAME} = models.XMLField(schema_path=${2:/path/to/RelaxNG}${3:, blank=True})"
+    body: "${1:FIELDNAME} = models.XMLField(schema_path=${2:/path/to/RelaxNG}${3:, blank=True})$0"
 
   # Form fields
 
   "Form CharField":
     prefix: "fchar"
-    body: "${1:FIELDNAME} = forms.CharField($2)"
+    body: "${1:FIELDNAME} = forms.CharField($2)$0"
   "Form ChoiceField":
     prefix: "fchoice"
-    body: "${1:FIELDNAME} = forms.ChoiceField($2)"
+    body: "${1:FIELDNAME} = forms.ChoiceField($2)$0"
   "Form ComboField":
     prefix: "fcombo"
-    body: "${1:FIELDNAME} = forms.ComboField($2)"
+    body: "${1:FIELDNAME} = forms.ComboField($2)$0"
   "Form DateField":
     prefix: "fdate"
-    body: "${1:FIELDNAME} = forms.DateField($2)"
+    body: "${1:FIELDNAME} = forms.DateField($2)$0"
   "Form DateTimeField":
     prefix: "fdatetime"
-    body: "${1:FIELDNAME} = forms.DateTimeField($2)"
+    body: "${1:FIELDNAME} = forms.DateTimeField($2)$0"
   "Form DecimalField":
     prefix: "fdecimal"
-    body: "${1:FIELDNAME} = forms.DecimalField($2)"
+    body: "${1:FIELDNAME} = forms.DecimalField($2)$0"
   "Form EmailField":
     prefix: "femail"
-    body: "${1:FIELDNAME} = forms.EmailField($2)"
+    body: "${1:FIELDNAME} = forms.EmailField($2)$0"
   "Form FileField":
     prefix: "ffile"
-    body: "${1:FIELDNAME} = forms.FileField($2)"
+    body: "${1:FIELDNAME} = forms.FileField($2)$0"
   "Form FilePathField":
     prefix: "ffilepath"
-    body: "${1:FIELDNAME} = forms.FilePathField($2)"
+    body: "${1:FIELDNAME} = forms.FilePathField($2)$0"
   "Form FloatField":
     prefix: "mfloat"
-    body: "${1:FIELDNAME} = forms.FloatField($2)"
+    body: "${1:FIELDNAME} = forms.FloatField($2)$0"
   "Form ImageField":
     prefix: "fimg"
-    body: "${1:FIELDNAME} = forms.ImageField($2)"
+    body: "${1:FIELDNAME} = forms.ImageField($2)$0"
   "Form IntegerField":
     prefix: "fint"
-    body: "${1:FIELDNAME} = forms.IntegerField($2)"
+    body: "${1:FIELDNAME} = forms.IntegerField($2)$0"
   "Form IPAddressField":
     prefix: "fip"
-    body: "${1:FIELDNAME} = forms.IPAddressField($2)"
+    body: "${1:FIELDNAME} = forms.IPAddressField($2)$0"
   "Form ModelChoiceField":
     prefix: "fmochoice"
-    body: "${1:FIELDNAME} = forms.ModelChoiceField($2)"
+    body: "${1:FIELDNAME} = forms.ModelChoiceField($2)$0"
   "Form ModelMultipleChoiceField":
     prefix: "fmomuchoice"
-    body: "${1:FIELDNAME} = forms.ModelMultipleChoiceField($2)"
+    body: "${1:FIELDNAME} = forms.ModelMultipleChoiceField($2)$0"
   "Form MultipleChoiceField":
     prefix: "fmuchoice"
-    body: "${1:FIELDNAME} = forms.MultipleChoiceField($2)"
+    body: "${1:FIELDNAME} = forms.MultipleChoiceField($2)$0"
   "Form MultiValueField":
     prefix: "fmuval"
-    body: "${1:FIELDNAME} = forms.MultiValueField($2)"
+    body: "${1:FIELDNAME} = forms.MultiValueField($2)$0"
   "Form NullBooleanField":
     prefix: "fnullbool"
-    body: "${1:FIELDNAME} = forms.NullBooleanField($2)"
+    body: "${1:FIELDNAME} = forms.NullBooleanField($2)$0"
   "Form RegexField":
     prefix: "fregex"
-    body: "${1:FIELDNAME} = forms.RegexField($2)"
+    body: "${1:FIELDNAME} = forms.RegexField($2)$0"
   "Form SlugField":
     prefix: "fslug"
-    body: "${1:slug} = forms.SlugField($2)"
+    body: "${1:slug} = forms.SlugField($2)$0"
   "Form SplitDateTimeField":
     prefix: "fsdatetime"
-    body: "${1:FIELDNAME} = forms.SplitDateTimeField($2)"
+    body: "${1:FIELDNAME} = forms.SplitDateTimeField($2)$0"
   "Form TimeField":
     prefix: "ftime"
-    body: "${1:FIELDNAME} = forms.TimeField($2)"
+    body: "${1:FIELDNAME} = forms.TimeField($2)$0"
   "Form TypedChoiceField":
     prefix: "ftchoice"
-    body: "${1:FIELDNAME} = forms.TypedChoiceField($2)"
+    body: "${1:FIELDNAME} = forms.TypedChoiceField($2)$0"
   "Form TypedMultipleChoiceField":
     prefix: "ftmuchoice"
-    body: "${1:FIELDNAME} = forms.TypedMultipleChoiceField($2)"
+    body: "${1:FIELDNAME} = forms.TypedMultipleChoiceField($2)$0"
   "Form URLField":
     prefix: "furl"
     body: "${1:FIELDNAME} = forms.URLField($2)"
@@ -174,7 +174,7 @@
     body: '''
       class ${1:FORMNAME}Form(forms.form):
           ${2:# TODO: Define form fields here}
-
+          $0
           def __init__(self, *args, **kwargs):
               super($1Form, self).__init__(*args, **kwargs)
 
@@ -190,13 +190,14 @@
     body: '''
       def ${1:VIEWNAME}(request):
           ${2:pass}
+          $0
     '''
   "Model Skeleton":
     prefix: "model"
     body: '''
       class ${1:MODELNAME}(models.Model):
           ${2:# TODO: Define fields here}
-
+          $0
           class Meta:
               verbose_name = '$1'
               verbose_name_plural = '$1s'
@@ -209,7 +210,7 @@
     body: '''
       class ${1:FORMNAME}Form(forms.ModelForm):
           ${3:# TODO: Define other fields here}
-
+          $0
           class Meta:
               model = $1
               fields = [$2]
@@ -229,7 +230,10 @@
     body: '''
       class ${1:MODELNAME}CreateView(CreateView):
           model = ${1:MODELNAME}
-          template_name = '${2:TEMPLATE_NAME}'
+          form_class = ${2:FORM_CLASS}
+          success_url = '${3:SUCCESS_URL}'
+          template_name = '${4:TEMPLATE_NAME}'
+          $0
     '''
   "DeleteView":
     prefix: "deleteview"
@@ -237,6 +241,7 @@
       class ${1:MODELNAME}DeleteView(DeleteView):
           model = ${1:MODELNAME}
           template_name = '${2:TEMPLATE_NAME}'
+          $0
     '''
   "DetailView":
     prefix: "detailview"
@@ -247,6 +252,7 @@
           slug_url_kwarg = '${3:SLUG_URL_KWARG}'
           success_url = '${4:SUCCESS_URL}'
           template_name = '${5:TEMPLATE_NAME}'
+          $0
     '''
   "ListView":
     prefix: "listview"
@@ -257,12 +263,14 @@
           page_kwarg = 'page'
           paginate_by = $3
           template_name = '${4:TEMPLATE_NAME}'
+          $0
     '''
   "TemplateView":
     prefix: "templateview"
     body: '''
       class ${1:CLASSNAME}TemplateView(TemplateView):
           template_name = '${2:TEMPLATE_NAME}'
+          $0
     '''
   "UpdateView":
     prefix: "updateview"
@@ -270,6 +278,7 @@
       class ${1:MODELNAME}UpdateView(UpdateView):
           model = ${1:MODELNAME}
           template_name = '${2:TEMPLATE_NAME}'
+          $0
     '''
   "Class Based View":
     prefix: "cbview"
@@ -282,6 +291,7 @@
 
           def post(self, request):
               pass
+          $0
     '''
 
   # Util Snippets
@@ -298,38 +308,38 @@
   "Send Mail":
     prefix: "sendmail"
     body: '''
-      mail.send_mail("${1:Subject}", "${2:Message}", "${3:from@example.com}", ${4:["to@example.com"]}${5:, fail_silently=True})
+      mail.send_mail("${1:Subject}", "${2:Message}", "${3:from@example.com}", ${4:["to@example.com"]}${5:, fail_silently=True}$0)
     '''
   "Traceback":
     prefix: "traceback"
     body: "traceback.print_exc()"
   "URL":
     prefix: "url"
-    body: "url(regex=r'^${1:URLPARENT}/$', view=${1:VIEW}, name='${3:URLNAME}'),"
+    body: "url(regex=r'^${1:URLPARENT}/$', view=${1:VIEW}, name='${3:URLNAME}'),$0"
 
 ".text.html.django":
   autoescape:
     prefix: "autoescape"
     body: '''
       {% autoescape ${1:off} %}
-          $2
+          $0
       {% endautoescape %}
     '''
   block:
     prefix: "block"
-    body: "{% block $1 %}$2{% endblock $1 %}"
+    body: "{% block $1 %}$0{% endblock $1 %}"
   blocktrans:
     prefix: "blocktrans"
     body: '''
       {% blocktrans ${1:with ${2:var1} as ${3:var2}} %}
-    	   $4{{ $3 }}
+    	  $4{{ $3 }}$0
       {% endblocktrans %}
     '''
   comment:
     prefix: "comment"
     body: '''
       {% comment %}
-    	   $1
+    	  $0
       {% endcomment %}
     '''
   csrf:
@@ -337,7 +347,7 @@
     body: "{% csrf_token %}"
   cycle:
     prefix: "cycle"
-    body: "{% cycle $1 as $2 %}"
+    body: "{% cycle $1 as $2 %}$0"
   debug:
     prefix: "debug"
     body: "{% debug %}"
@@ -349,23 +359,25 @@
     body: "{% empty %}"
   extends:
     prefix: "extends"
-    body: "{% extends \"$1\" %}"
+    body: "{% extends \"$1\" %}$0"
   filter:
     prefix: "filter"
     body: '''
       {% filter $1 %}
     	   $2
       {% endfilter %}
+      $0
     '''
   firstof:
     prefix: "firstof"
-    body: "{% firstof $1 %}"
+    body: "{% firstof $1 %}$0"
   for:
     prefix: "for"
     body: '''
       {% for $1 in $2 %}
           $3
       {% endfor %}
+      $0
     '''
   fore:
     prefix: "fore"
@@ -375,40 +387,66 @@
       {% empty %}
           $4
       {% endfor %}
+      $0
     '''
   if:
     prefix: "if"
-    body: "{% if $1 %}$0{% endif %}"
+    body: '''
+      {% if $1 %}
+          $2
+      {% endif %}
+      $0
+    '''
   ifchanged:
     prefix: "ifchanged"
-    body: "{% ifchanged %}$0{% endifchanged %}"
+    body: '''
+      {% ifchanged %}
+          $1
+      {% endifchanged %}
+      $0
+    '''
   ifequal:
     prefix: "ifequal"
-    body: "{% ifequal $1 $2 %}$0{% endifequal %}"
+    body: '''
+      {% ifequal $1 $2 %}
+          $2
+      {% endifequal %}
+      $0
+    '''
   ifnotequal:
     prefix: "ifnotequal"
-    body: "{% ifnotequal $1 $2 %}$0{% endifnotequal %}"
+    body: '''
+      {% ifnotequal $1 $2 %}
+          $3
+      {% endifnotequal %}
+      $0
+    '''
   include:
     prefix: "include"
-    body: "{% include \"$1\" %}"
+    body: "{% include \"$1\" %}$0"
   load:
     prefix: "load"
-    body: "{% load $1 %}"
+    body: "{% load $1 %}$0"
   now:
     prefix: "now"
-    body: "{% now \"$1\" %}"
+    body: "{% now \"$1\" %}$0"
   regroup:
     prefix: "regroup"
-    body: "{% regroup $1 by $2 as $3 %}"
+    body: "{% regroup $1 by $2 as $3 %}$0"
   spaceless:
     prefix: "spaceless"
-    body: "{% spaceless %}$0{% endspaceless %}"
+    body: '''
+      {% spaceless %}
+          $1
+      {% endspaceless %}
+      $0
+    '''
   ssi:
     prefix: "ssi"
-    body: "{% ssi $1 ${2:parsed} %}"
+    body: "{% ssi $1 ${2:parsed} %}$0"
   static:
     prefix: "static"
-    body: "{% static $1 %}"
+    body: "{% static $1 %}$0"
   super:
     prefix: "super"
     body: "{{ block.super }}"
@@ -417,13 +455,24 @@
     body: "{% templatetag %}"
   trans:
     prefix: "trans"
-    body: "{% trans \"${1:string to translate}\" %}"
+    body: "{% trans \"${1:string to translate}\" %}$0"
+  variable:
+    prefix: "var"
+    body: "{{ $1 }}$0"
   verbatim:
     prefix: "verbatim"
-    body: "{% verbatim %} $1 {% endverbatim %}"
+    body: '''
+      {% verbatim %}
+          $1
+      {% endverbatim %}'''
   widthratio:
     prefix: "widthratio"
-    body: "{% widthratio ${1:this_value} ${2:max_value} ${3:100} %}"
+    body: "{% widthratio ${1:this_value} ${2:max_value} ${3:100} %}$0"
   with:
     prefix: "with"
-    body: "{% with ${1:var} as ${2:name} %}{{ ${3:$2} }}{% endwith %}"
+    body: '''
+      {% with ${1:var} as ${2:name} %}
+          {{ ${3:$2} }}
+      {% endwith %}
+      $0
+    '''
