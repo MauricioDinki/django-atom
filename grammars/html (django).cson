@@ -1,7 +1,7 @@
 {
   name: "HTML (Django Template)",
   scopeName: "text.html.django",
-  fileTypes: ["html"],
+  fileTypes: ["html", "djhtml],
   patterns: [
     {
       name: "comment.block.django",
