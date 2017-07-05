@@ -299,12 +299,6 @@
   "__init__":
     prefix: "init"
     body: "__init__(self, *args, **kwargs)"
-  "ipdb":
-    prefix: "ipdb"
-    body: "ipdb.set_trace()"
-  "pdb":
-    prefix: "pdb"
-    body: "pdb.set_trace()"
   "Send Mail":
     prefix: "sendmail"
     body: '''
